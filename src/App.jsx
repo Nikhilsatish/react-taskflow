@@ -1,13 +1,28 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import TaskCard from "./components/TaskCard";
 import TaskList from "./components/TaskList";
 
+const Initial_Tasks = [
+  { id: 1, title: "Buy groceries", priority: "high", done: false },
+  { id: 2, title: "Read for 30 minutes", priority: "low", done: false },
+  { id: 3, title: "Go for a walk", priority: "med", done: true },
+];
+
 function App() {
-  const tasks = [
-    { id: 1, title: "Buy groceries", priority: "high", done: false },
-    { id: 2, title: "Read for 30 minutes", priority: "low", done: false },
-    { id: 3, title: "Go for a walk", priority: "med", done: true },
-  ];
+  const [tasks, setTasks] = useState(Initial_Tasks);
+
+  const handleToggle = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        return task.id === id ? { ...task, done: !task.done } : task;
+      }),
+    );
+  };
+
+  const handleDelete = (id) => {
+    setTasks(tasks.filter((task) => task.id != id));
+  };
 
   function handleAddClick() {
     console.log("Add Task button clicked");
@@ -20,8 +35,8 @@ function App() {
         <div className="container">
           <TaskList
             tasks={tasks}
-            onToggle={(id) => console.log("toggle", id)}
-            onDelete={(id) => console.log("delete", id)}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
           />
         </div>
       </div>
