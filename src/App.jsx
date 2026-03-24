@@ -4,6 +4,7 @@ import TaskCard from "./components/TaskCard";
 import TaskList from "./components/TaskList";
 import FilterTabs from "./components/FilterTabs";
 import TaskForm from "./components/TaskForm";
+import './App.css';
 
 const Initial_Tasks = [
   { id: 1, title: "Buy groceries", priority: "high", done: false },
