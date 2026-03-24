@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import TaskCard from "./components/TaskCard";
 import TaskList from "./components/TaskList";
+import FilterTabs from "./components/FilterTabs";
 
 const Initial_Tasks = [
   { id: 1, title: "Buy groceries", priority: "high", done: false },
@@ -11,6 +12,13 @@ const Initial_Tasks = [
 
 function App() {
   const [tasks, setTasks] = useState(Initial_Tasks);
+  const [filter, setFilter] = useState("all");
+
+  const visibleTasks = tasks.filter((t) => {
+    if (filter === "active") return !t.done;
+    if (filter === "done") return t.done;
+    return true;
+  });
 
   const handleToggle = (id) => {
     setTasks(
@@ -24,17 +32,17 @@ function App() {
     setTasks(tasks.filter((task) => task.id != id));
   };
 
-  function handleAddClick() {
-    console.log("Add Task button clicked");
-  }
+  
   return (
     <>
       <div className="app">
-        <Header onAddClick={handleAddClick} />
+        <Header onAddClick={() => console.log('coming soon')} />
 
         <div className="container">
+          <FilterTabs filter={filter} onChange={setFilter} />
           <TaskList
-            tasks={tasks}
+            tasks={visibleTasks}
+            filter={filter}
             onToggle={handleToggle}
             onDelete={handleDelete}
           />

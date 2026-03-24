@@ -1,7 +1,7 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 
-function TaskList({ tasks, onToggle, onDelete }) {
+function TaskList({ tasks, onToggle, onDelete, filter }) {
   if (tasks.length === 0) {
     return <p className="empty">No tasks here!</p>;
   }
