@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import TaskCard from "./components/TaskCard";
 import TaskList from "./components/TaskList";
 import FilterTabs from "./components/FilterTabs";
+import TaskForm from "./components/TaskForm";
 
 const Initial_Tasks = [
   { id: 1, title: "Buy groceries", priority: "high", done: false },
@@ -13,6 +14,7 @@ const Initial_Tasks = [
 function App() {
   const [tasks, setTasks] = useState(Initial_Tasks);
   const [filter, setFilter] = useState("all");
+  const [showForm, setShowForm] = useState(false);
 
   const visibleTasks = tasks.filter((t) => {
     if (filter === "active") return !t.done;
@@ -28,18 +30,26 @@ function App() {
     );
   };
 
+  function handleAdd(task) {
+    setTasks([{ ...task, id: Date.now(), done: false }, ...tasks]);
+  }
+
   const handleDelete = (id) => {
     setTasks(tasks.filter((task) => task.id != id));
   };
 
-  
   return (
     <>
       <div className="app">
-        <Header onAddClick={() => console.log('coming soon')} />
+        <Header onAddClick={() => setShowForm(true)} />
 
         <div className="container">
           <FilterTabs filter={filter} onChange={setFilter} />
+
+          {showForm && (
+            <TaskForm onAdd={handleAdd} onCancel={() => setShowForm(false)} />
+          )}
+
           <TaskList
             tasks={visibleTasks}
             filter={filter}
