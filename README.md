@@ -8,8 +8,7 @@ A clean, fully functional task management app built from scratch with React. Thi
 
 ## 📸 Preview
 
-> Add a screenshot here after building:
-> `![TaskFlow Preview](./public/react-taskflow.PNG)`
+![TaskFlow Preview](react-taskflow.PNG)
 
 ---
 
