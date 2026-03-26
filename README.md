@@ -2,7 +2,7 @@
 
 A clean, fully functional task management app built from scratch with React. This is the first project in my 3-part React learning series, covering all core fundamentals from JSX to controlled forms.
 
-**[Live Demo →](https://react-taskflow.vercel.app)** &nbsp;|&nbsp; **[My React Learning Journey →](https://github.com/Nikhilsatish)**
+**[Live Demo →](https://react-taskflow-mu.vercel.app/)** &nbsp;|&nbsp; **[My React Learning Journey →](https://github.com/Nikhilsatish)**
 
 ---
 
