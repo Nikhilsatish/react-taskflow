@@ -1,21 +1,21 @@
 # ✅ TaskFlow — React Todo Manager
 
-A clean, fully functional task management app built from scratch with React. This is the first project in my 3-part React learning series, covering all core fundamentals from JSX to controlled forms.
+![React](https://img.shields.io/badge/React-18-blue)
+![Vite](https://img.shields.io/badge/Vite-5-green)
+![Topics](https://img.shields.io/badge/Topics-R1--R10-teal)
 
-**[Live Demo →](https://react-taskflow-mu.vercel.app/)** &nbsp;|&nbsp; **[My React Learning Journey →](https://github.com/Nikhilsatish)**
+A clean, fully functional task manager built from scratch with React.
+Project 1 of my 3-part React learning series — covers all fundamentals
+from JSX to controlled forms with validation.
 
----
-
-## 📸 Preview
-
-![TaskFlow Preview](react-taskflow.PNG)
+**[Live Demo →](https://react-taskflow-mu.vercel.app/)**
 
 ---
 
 ## ✨ Features
 
 - Add, delete, and toggle tasks as complete
-- Filter tasks by **All / Active / Done**
+- Filter by **All / Active / Done** tabs
 - Priority badges — High / Medium / Low
 - Form validation with inline error messages
 - Empty state when no tasks match the filter
@@ -25,20 +25,18 @@ A clean, fully functional task management app built from scratch with React. Thi
 
 ## 🧠 React Concepts Practiced
 
-This project was built intentionally to practice these specific React topics:
-
-| Topic                               | What I implemented                                                                                            |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **R1 — What is React**              | Scaffolded with Vite, understood why React over vanilla JS                                                    |
-| **R2 — JSX & rendering**            | Wrote JSX, understood it compiles to `React.createElement`                                                    |
-| **R3 — Components**                 | Split UI into `Header`, `TaskList`, `TaskCard`, `TaskForm`, `FilterTabs` — both function and class components |
-| **R4 — Props & drilling**           | Passed `task` data from `App → TaskList → TaskCard`, felt the drilling pain                                   |
-| **R5 — State & setState**           | Held `tasks[]` in `useState`, never mutated directly                                                          |
-| **R6 — Event handling**             | `onClick` for delete/toggle, `onChange` for inputs, `onSubmit` for form                                       |
-| **R7 — Conditional rendering**      | Empty state message, priority badge colors, done/undone styles                                                |
-| **R8 — Lists & keys**               | `.map()` over tasks, learned why `key={task.id}` beats `key={index}`                                          |
-| **R9 — Controlled vs uncontrolled** | Built form as controlled first, rewrote one field with `useRef` to compare                                    |
-| **R10 — Forms handling**            | Multi-field form with title, priority, validation, and reset on submit                                        |
+| Topic | What I implemented |
+|---|---|
+| **R1 — What is React** | Scaffolded with Vite, understood why React over vanilla JS |
+| **R2 — JSX** | Wrote JSX, understood it compiles to `React.createElement` |
+| **R3 — Components** | `Header`, `TaskList`, `TaskCard`, `TaskForm`, `FilterTabs` |
+| **R4 — Props** | Passed task data `App → TaskList → TaskCard`, felt the drilling |
+| **R5 — State** | `tasks[]` in `useState`, never mutated — always spread |
+| **R6 — Events** | `onClick` delete/toggle, `onChange` inputs, `onSubmit` form |
+| **R7 — Conditional rendering** | Empty state, badge colors, done/undone styles |
+| **R8 — Lists & keys** | `.map()` over tasks, `key={task.id}` not index |
+| **R9 — Controlled inputs** | `value + onChange` on every field, compared with `useRef` |
+| **R10 — Forms** | Multi-field form with title, priority, validation, reset |
 
 ---
 
@@ -47,15 +45,30 @@ This project was built intentionally to practice these specific React topics:
 ```
 src/
 ├── components/
-│   ├── Header.jsx          # App title + task count badge
-│   ├── TaskList.jsx         # Maps over tasks, shows empty state
-│   ├── TaskCard.jsx         # Single task row with toggle + delete
-│   ├── TaskForm.jsx         # Controlled form with validation
-│   └── FilterTabs.jsx       # All / Active / Done tabs
-├── App.jsx                  # All state lives here
-├── App.css
+│   ├── Header.jsx        # logo + Add Task button
+│   ├── FilterTabs.jsx    # All / Active / Done tabs
+│   ├── TaskList.jsx      # maps tasks → TaskCard, empty state
+│   ├── TaskCard.jsx      # single task row
+│   └── TaskForm.jsx      # controlled form with validation
+├── App.jsx               # all state lives here
 └── main.jsx
 ```
+
+---
+
+## 🔑 Key Learnings
+
+**1. Derived state vs stored state**
+Storing `filteredTasks` in separate `useState` caused sync bugs.
+Fixed by calculating inline: `tasks.filter(...)`. Never duplicate state.
+
+**2. The `key={index}` bug**
+Index as key caused React to reuse the wrong DOM node on delete.
+Checkboxes visually shifted. `key={task.id}` fixes it.
+
+**3. Controlled inputs vs uncontrolled**
+Uncontrolled inputs (useRef) can't validate keystroke-by-keystroke
+or reset programmatically. Controlled inputs make both trivial.
 
 ---
 
@@ -68,42 +81,27 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
-
----
-
-## 🔑 Key Learnings
-
-**1. Why controlled inputs are preferred**
-When I tried to do validation using an uncontrolled input (`useRef`), I had no way to show real-time error messages or pre-fill values on edit. Controlled inputs give you full power over the input's value at all times.
-
-**2. Derived state vs stored state**
-I initially stored `filteredTasks` in `useState` separately. This caused sync bugs when the `tasks` array changed. The fix: derive it inline — `tasks.filter(...)` — never duplicate state.
-
-**3. The key={index} bug**
-When I used array index as key and deleted the first task, React reused the wrong DOM node and the checkboxes shifted. Switching to `key={task.id}` fixed it instantly. DevTools made this visible.
-
 ---
 
 ## 🛠️ Built With
 
 - [React 18](https://react.dev)
 - [Vite](https://vitejs.dev)
-- Vanilla CSS
+- Vanilla CSS — no UI libraries
 
 ---
 
 ## 📌 Part of My React Series
 
-| Project                                                                 | Topics                            | Status         |
-| ----------------------------------------------------------------------- | --------------------------------- | -------------- |
-| **TaskFlow** (this one)                                                 | R1–R10 Fundamentals               | ✅ Complete    |
-| [ExpenseTracker](https://github.com/Nikhilsatish/expense-tracker-react) | R11–R20 Hooks + Context + Router  | 🔨 In progress |
-| [DevBoard](https://github.com/Nikhilsatish/devboard-github-explorer)    | R21–R30 Redux + Advanced Patterns | ⏳ Upcoming    |
+| Project | Topics | Status |
+|---|---|---|
+| **TaskFlow** (this one) | R1–R10 Fundamentals | ✅ Complete |
+| [ExpenseTracker](https://github.com/Nikhilsatish/expense-tracker-react) | R11–R20 Hooks + Context + Router | ⏳ Upcoming |
+| [DevBoard](https://github.com/Nikhilsatish/devboard-github-explorer) | R21–R30 Redux + Advanced | ⏳ Upcoming |
 
 ---
 
 ## 👨‍💻 Author
 
-**Nikhil** — Senior Software Engineer  
+**Nikhil M S** — Senior Software Engineer
 [GitHub](https://github.com/Nikhilsatish) · [LinkedIn](https://linkedin.com/in/nikhil-sathish)
