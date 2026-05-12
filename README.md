@@ -97,7 +97,7 @@ npm run dev
 |---|---|---|
 | **TaskFlow** (this one) | R1–R10 Fundamentals | ✅ Complete |
 | [ExpenseTracker](https://github.com/Nikhilsatish/expense-tracker-react) | R11–R20 Hooks + Context + Router | ⏳ Upcoming |
-| [DevBoard](https://github.com/Nikhilsatish/devboard-github-explorer) | R21–R30 Redux + Advanced | ⏳ Upcoming |
+| [DevBoard](https://github.com/Nikhilsatish/devboard) | R21–R30 Redux + Advanced | ⏳ Upcoming |
 
 ---
 
