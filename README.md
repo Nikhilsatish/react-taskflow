@@ -12,6 +12,11 @@ from JSX to controlled forms with validation.
 
 ---
 
+## 📸 Preview
+<img width="1920" height="681" alt="image" src="https://github.com/user-attachments/assets/3b25d24b-f851-4e69-bef4-55e2b8511df8" />
+
+---
+
 ## ✨ Features
 
 - Add, delete, and toggle tasks as complete
